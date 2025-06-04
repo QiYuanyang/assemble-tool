@@ -1,0 +1,439 @@
+Activated USD python/tools from /home/qyy/data/openUSD/openUSD-py311
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (-0.3829510357676886, 0.11426364228778046, 0.7122906108383535)
+                double3 target = (0.23360588708317115, 0.06768789113529067, 0.6790225300668394)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./ur5_hande_insertion_table.usd"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            float3 "rtx:debugView:pixelDebug:textColor" = (0, 1e18, 0)
+            float3 "rtx:fog:fogColor" = (0.75, 0.75, 0.75)
+            float3 "rtx:index:backgroundColor" = (0, 0, 0)
+            float3 "rtx:index:regionOfInterestMax" = (0, 0, 0)
+            float3 "rtx:index:regionOfInterestMin" = (0, 0, 0)
+            float3 "rtx:post:backgroundZeroAlpha:backgroundDefaultColor" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gain" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:offset" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:saturation" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:blackpoint" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gain" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:lift" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:multiply" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:offset" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:whitepoint" = (1, 1, 1)
+            float3 "rtx:post:lensDistortion:lensFocalLengthArray" = (10, 30, 50)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffX" = (450, 475, 500)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffY" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:cutoffPoint" = (2, 2, 2)
+            float3 "rtx:post:lensFlares:haloFlareFalloff" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:haloFlareRadius" = (75, 75, 75)
+            float3 "rtx:post:lensFlares:isotropicFlareFalloff" = (50, 50, 50)
+            float3 "rtx:post:lensFlares:spectralBlurWavelengthRange" = (380, 550, 770)
+            float3 "rtx:post:tonemap:whitepoint" = (1, 1, 1)
+            float3 "rtx:raytracing:indexdirect:svoBrickSize" = (32, 32, 32)
+            float3 "rtx:raytracing:inscattering:singleScatteringAlbedo" = (0.9, 0.9, 0.9)
+            float3 "rtx:raytracing:inscattering:transmittanceColor" = (0.5, 0.5, 0.5)
+            float3 "rtx:sceneDb:ambientLightColor" = (0.1, 0.1, 0.1)
+            float2 "rtx:viewTile:resolution" = (0, 0)
+        }
+    }
+    defaultPrim = "model"
+    endTimeCode = 1000000
+    metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+}
+
+def Xform "Environment"
+{
+    quatd xformOp:orient = (1, 0, 0, 0)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def DistantLight "defaultLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float inputs:angle = 1
+        float inputs:intensity = 3000
+        float inputs:shaping:cone:angle = 180
+        float inputs:shaping:cone:softness
+        float inputs:shaping:focus
+        color3f inputs:shaping:focusTint
+        asset inputs:shaping:ies:file
+        quatd xformOp:orient = (0.6532814824381883, 0.2705980500730985, 0.27059805007309845, 0.6532814824381882)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+
+def Xform "model"
+{
+    quatd xformOp:orient = (1, 0, 0, 0)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def "ur5_hande" (
+        delete payload = [
+            @file:/home/jsz/Projects/IsaacLabProjects/Li_F/ur5_hande_insertion.usd@,
+            @UR5_scripts/assets/ur5_hande_insertion.usd@
+        ]
+        prepend payload = @ur5_hande_insertion.usd@
+    )
+    {
+        double3 xformOp:translate = (0, 0, 0)
+
+        over "ActionGraph"
+        {
+            over "ActionGraph"
+            {
+                over "make_array"
+                {
+                    custom token inputs:input0
+                    delete token inputs:input0.connect = </model/ur5_hande/ActionGraph/ActionGraph/constant_double_02.inputs:value>
+                    prepend token inputs:input0.connect = </model/ur5_hande/ActionGraph/ActionGraph/constant_double_02.inputs:value>
+                    custom token inputs:input1
+                    delete token inputs:input1.connect = </model/ur5_hande/ActionGraph/ActionGraph/constant_double_03.inputs:value>
+                    prepend token inputs:input1.connect = </model/ur5_hande/ActionGraph/ActionGraph/constant_double_03.inputs:value>
+                    uniform float2 ui:nodegraph:node:pos = (259.6046, 303.51895)
+                }
+
+                over "make_array_01"
+                {
+                    custom token inputs:input0
+                    delete token inputs:input0.connect = </model/ur5_hande/ActionGraph/ActionGraph/constant_double.inputs:value>
+                    prepend token inputs:input0.connect = </model/ur5_hande/ActionGraph/ActionGraph/constant_double.inputs:value>
+                    custom token inputs:input1
+                    delete token inputs:input1.connect = </model/ur5_hande/ActionGraph/ActionGraph/constant_double_01.inputs:value>
+                    prepend token inputs:input1.connect = </model/ur5_hande/ActionGraph/ActionGraph/constant_double_01.inputs:value>
+                    uniform float2 ui:nodegraph:node:pos = (256.17078, 449.69354)
+                }
+
+                over "make_array_02"
+                {
+                    custom token inputs:input0
+                    delete token inputs:input0.connect = </model/ur5_hande/ActionGraph/ActionGraph/constant_double_04.inputs:value>
+                    prepend token inputs:input0.connect = </model/ur5_hande/ActionGraph/ActionGraph/constant_double_04.inputs:value>
+                    custom token inputs:input1
+                    delete token inputs:input1.connect = </model/ur5_hande/ActionGraph/ActionGraph/constant_double_05.inputs:value>
+                    prepend token inputs:input1.connect = </model/ur5_hande/ActionGraph/ActionGraph/constant_double_05.inputs:value>
+                    uniform float2 ui:nodegraph:node:pos = (-675.37933, 454.24042)
+                }
+
+                over "constant_double_02"
+                {
+                    custom double inputs:value = 0.002
+                }
+
+                over "constant_double_03"
+                {
+                    custom double inputs:value = 0.002
+                    uniform float2 ui:nodegraph:node:pos = (-53.91968, 381.931)
+                }
+
+                over "constant_double"
+                {
+                    custom double inputs:value = -0.02
+                }
+
+                over "constant_double_01"
+                {
+                    custom double inputs:value = -0.02
+                }
+
+                over "constant_double_04"
+                {
+                    custom double inputs:value = 0.0001
+                    uniform float2 ui:nodegraph:node:pos = (-924.3612, 422.6982)
+                }
+
+                over "constant_double_05"
+                {
+                    custom double inputs:value = 0.0001
+                    uniform float2 ui:nodegraph:node:pos = (-934.38983, 509.13727)
+                }
+
+                over "isaac_gripper_controller_node"
+                {
+                    uniform float2 ui:nodegraph:node:pos = (981.67316, 368.0174)
+                }
+            }
+        }
+
+        over "base_link"
+        {
+            float physics:mass = 4
+
+            over "shoulder_pan_joint"
+            {
+                float drive:angular:physics:damping = 26.17994
+                float drive:angular:physics:maxForce = 9000
+                float drive:angular:physics:stiffness = 261.7994
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+        }
+
+        over "shoulder_link"
+        {
+            float physics:mass = 3.7
+
+            over "shoulder_lift_joint"
+            {
+                float drive:angular:physics:damping = 26.17994
+                float drive:angular:physics:maxForce = 9000
+                float drive:angular:physics:stiffness = 261.7994
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+        }
+
+        over "upper_arm_link"
+        {
+            float physics:mass = 8.4
+
+            over "elbow_joint"
+            {
+                float drive:angular:physics:damping = 26.17994
+                float drive:angular:physics:maxForce = 9000
+                float drive:angular:physics:stiffness = 261.7994
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+        }
+
+        over "forearm_link"
+        {
+            float physics:mass = 2.275
+
+            over "wrist_1_joint"
+            {
+                float drive:angular:physics:damping = 26.17994
+                float drive:angular:physics:maxForce = 1680
+                float drive:angular:physics:stiffness = 261.7994
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+        }
+
+        over "wrist_1_link"
+        {
+            float physics:mass = 1.2
+
+            over "wrist_2_joint"
+            {
+                float drive:angular:physics:damping = 26.17994
+                float drive:angular:physics:maxForce = 1680
+                float drive:angular:physics:stiffness = 261.7994
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+        }
+
+        over "wrist_2_link"
+        {
+            float physics:mass = 1.2
+
+            over "wrist_3_joint"
+            {
+                float drive:angular:physics:damping = 26.17994
+                float drive:angular:physics:maxForce = 1680
+                float drive:angular:physics:stiffness = 261.7994
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+        }
+
+        over "hande" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        )
+        {
+            float physics:mass = 2
+            float physxRigidBody:sleepThreshold = 0
+
+            over "hande_left_finger_joint"
+            {
+                float drive:linear:physics:damping = 26.17994
+                float drive:linear:physics:maxForce = 1
+                float drive:linear:physics:stiffness = 261.7994
+                float drive:linear:physics:targetPosition = 0
+                float physics:lowerLimit = -0.02
+                float physics:upperLimit = 0.002
+                float state:linear:physics:position = 0
+                float state:linear:physics:velocity = 0
+            }
+
+            over "hande_right_finger_joint"
+            {
+                float drive:linear:physics:damping = 26.17994
+                float drive:linear:physics:maxForce = 1
+                float drive:linear:physics:stiffness = 261.7994
+                float drive:linear:physics:targetPosition = 0
+                float physics:lowerLimit = -0.02
+                float physics:upperLimit = 0.002
+                float state:linear:physics:position = 0
+                float state:linear:physics:velocity = 0
+            }
+        }
+
+        over "peg_link"
+        {
+            float physics:mass = 1
+
+            over "PrismaticJoint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:linear"]
+            )
+            {
+                float drive:linear:physics:damping = 26.17994
+                float drive:linear:physics:maxForce = 10
+                float drive:linear:physics:stiffness = 261.7994
+                float physxLimit:linear:damping = 0
+                float physxLimit:linear:stiffness = 0
+            }
+        }
+
+        over "gelsight_1"
+        {
+            float physics:mass = 0.1
+            quatd xformOp:orient = (0.004499714355915804, 0.010396061758968912, 0.0000540298270018472, 0.9999358337170424)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-0.13213209807872187, 0.126, 0.6402977108955668)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "collisions"
+            {
+                over "mesh_3"
+                {
+                    bool physics:collisionEnabled = 0
+                }
+
+                over "mesh_2"
+                {
+                    bool physics:collisionEnabled = 0
+                }
+            }
+        }
+
+        over "gelsight_0"
+        {
+            float physics:mass = 0.1
+            quatd xformOp:orient = (0.9999359250068667, -0.00004678912744336547, 0.010387335179401273, -0.0044996621328969285)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-0.1661233752966002, 0.0955, 0.6410045623779166)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "collisions"
+            {
+                over "mesh_2"
+                {
+                    bool physics:collisionEnabled = 0
+                }
+
+                over "mesh_3"
+                {
+                    bool physics:collisionEnabled = 0
+                }
+            }
+        }
+
+        over "world"
+        {
+        }
+
+        over "wrist_3_link"
+        {
+            float physics:mass = 0.188
+        }
+
+        over "gripper_link"
+        {
+            float physics:mass = 0.0001
+        }
+
+        over "gripper_base"
+        {
+            float physics:mass = 0.0001
+        }
+
+        over "hande_left_finger"
+        {
+            float physics:mass = 0.0001
+
+            over "gelsight_0_joint"
+            {
+                point3f physics:localPos0 = (-0.015, -0.017, 0.08)
+            }
+        }
+
+        over "hande_right_finger"
+        {
+            float physics:mass = 0.0001
+
+            over "gelsight_1_joint"
+            {
+                point3f physics:localPos0 = (0.015, 0.017, 0.08)
+            }
+        }
+
+        over "root_joint"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def "table" (
+        delete payload = @file:/home/jsz/Projects/IsaacLabProjects/Li_F/UR5_scripts/assets/ur5_hande_table_insertion.usd@
+        prepend payload = @UR5_scripts/assets/ur5_hande_table_insertion.usd@
+    )
+    {
+        over "world"
+        {
+        }
+
+        over "walls"
+        {
+        }
+
+        over "table"
+        {
+        }
+    }
+}
+
